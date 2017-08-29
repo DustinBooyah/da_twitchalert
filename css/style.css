@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,700i,900,900i');
+body {
+  text-align:center;
+  color:#666;
+  font-family:'Source Sans Pro';
+/*  font-size:1.5em;*/
+  padding-top:40vh;
+  height:100vh;
+  overflow:hidden;
+  /*-webkit-backface-visibility: hidden; I'll use this if I decide to rotate the text at some point */
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0,0,0);
+}
+/* typography stuffs */
+h1 {
+  font-size:3rem;
+  letter-spacing:-0.04em;
+  font-style:italic;
+}
+h2 {
+  font-weight:normal;
+  letter-spacing:-0.04em;
+}
+/* Make sure they can sit next to each other without spilling anything or running away ;) */
+.slide {
+  display:inline-block;
+  overflow:auto;
+  white-space:nowrap;
+  /*margin:auto;*/
+/* transform-style: preserve-3d;
+  transform: rotateX(-40deg) rotateY(32deg); eh, maybe later. */
+}
+/* Set Display Duration */
+.slide:first-of-type { 
+  animation: showup 6s infinite;
+}
+.slide:last-of-type {
+  width:auto;
+  animation: reveal 6s infinite;
+}
+.slide:last-of-type h2 {
+  margin-left:auto;
+  animation: slidein 6s infinite;
+}
+/* Configure the three animations I'm using up there ^^ */
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+@keyframes slidein {
+	/*give these enough room to slide in, otherwise they'll just show up*/
+    0% { margin-left:-16rem; }
+    20% { margin-left:-16rem; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:auto;}
+    80% {opacity:1;}
+    100% {opacity:0;width:auto;}
+}
